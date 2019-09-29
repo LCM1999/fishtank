@@ -6,6 +6,8 @@
 #include <qstandarditemmodel.h>
 #include <QAbstractItemModel>
 
+#include <QDebug>
+
 void MainWindow::initTreeView() {
     QStandardItemModel* model = new QStandardItemModel(ui->treeView);
     model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("序号")<<QStringLiteral("虚拟机名"));
@@ -41,15 +43,14 @@ void MainWindow::initTreeView() {
 void MainWindow::OnlineTreeViewClick(const QModelIndex & index){
 
     QAbstractItemModel* m=(QAbstractItemModel*)index.model();
-
     QModelIndex x=m->index(index.row(),1);
     QString s= x.data().toString();
-    this->vm_name = this->qString2char(s);
-    QMessageBox::about(this,QStringLiteral("选中虚拟机"),s);
+    this->vm_name = new QString(s.data());
+    qDebug()<<*vm_name;
+    QMessageBox::about(this,QStringLiteral("选中虚拟机"),*vm_name);
 }
 
 void MainWindow::OnlineTreeViewClickBin(const QModelIndex & index){
-
     QAbstractItemModel* m=(QAbstractItemModel*)index.model();
     for(int columnIndex = 0; columnIndex < m->columnCount(); columnIndex++)
     {

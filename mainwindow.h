@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QString>
 #include "ui_mainwindow.h"
+#include "int3thread.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,10 +27,15 @@ private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_clicked();
     void on_pushButton_3_clicked();
+    void on_listing_triggered();
+
 private:
     Ui::MainWindow *ui;
-    char* vm_name;
+    QString* vm_name;
+    int3Thread* thread_listing_int3;
+    bool isListing;
     void initTreeView();
+    void openListingInt3();
+    void closeListingInt3();
 };
-
 #endif // MAINWINDOW_H

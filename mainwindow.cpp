@@ -4,6 +4,7 @@
 #include "dialogstruct.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->vm_name = NULL;
+    this->isListing = false;
+    this->thread_listing_int3 = NULL;
     this->initTreeView();
 }
 
@@ -19,13 +22,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-char *MainWindow::qString2char(QString str)
-{
-    char* s;
-    QByteArray arr = str.toLatin1();
-    s = arr.data();
-    return s;
-}
 
 
 
@@ -46,4 +42,18 @@ void MainWindow::on_pushButton_3_clicked()
 {
     Dialogprocess* dialog = new Dialogprocess(this);
     dialog->show();
+}
+
+void MainWindow::on_listing_triggered()
+{
+    if(isListing) {
+        if(thread_listing_int3 != NULL) {
+            closeListingInt3();
+        }
+        isListing = false;
+    } else {
+        openListingInt3();
+        isListing = true;
+    }
+//    QMessageBox::about(this,"asd","asdas");
 }
