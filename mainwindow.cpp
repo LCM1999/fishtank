@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->vm_name = NULL;
     this->initTreeView();
 }
 
@@ -17,6 +18,15 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+char *MainWindow::qString2char(QString str)
+{
+    char* s;
+    QByteArray arr = str.toLatin1();
+    s = arr.data();
+    return s;
+}
+
 
 
 
