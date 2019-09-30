@@ -29,13 +29,16 @@ SOURCES += \
     treeView.cpp \
     dialogstruct.cpp \
     dialogfile.cpp \
-    dialogprocess.cpp
+    dialogprocess.cpp \
+    int3listing.cpp \
+    int3thread.cpp
 
 HEADERS += \
         mainwindow.h \
     dialogstruct.h \
     dialogfile.h \
-    dialogprocess.h
+    dialogprocess.h \
+    int3thread.h
 
 FORMS += \
         mainwindow.ui \
@@ -45,3 +48,6 @@ FORMS += \
 
 RESOURCES += \
     myres.qrc
+
+
+unix|win32: LIBS += -lvmi
