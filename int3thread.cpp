@@ -50,13 +50,12 @@ static void close_handler(int sig)
     interrupted = sig;
 }
 
-int3Thread::int3Thread(char* name,QTextBrowser* textBrowser)
+int3Thread::int3Thread(char* name)
 {
     isRun = false;
     qDebug()<<"name::"<<name;
     this->vm_name = QString(name);
     qDebug()<<"name::"<<this->vm_name;
-    this->textBrowser = textBrowser;
 }
 
 void int3Thread::stop() {
@@ -175,7 +174,8 @@ void int3Thread::run() {
 
             break;
         case 14:
-            textBrowser->append("gui_6()");
+            emit textSig("gui_6()");
+
             break;
         case 15:
             emit textSig("gui_7()");

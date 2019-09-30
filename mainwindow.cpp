@@ -78,7 +78,7 @@ void MainWindow::on_textBrowser_2_textChanged()
     ui->textBrowser_2->moveCursor(QTextCursor::End);
 }
 
-void MainWindow::updateText(QString text)
+void MainWindow::updateText(QString s)
 {
-    ui->textBrowser_2->append(text);
+    ui->textBrowser_2->append(s);
 }
