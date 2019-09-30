@@ -1,4 +1,4 @@
-#include "int3thread.h"
+﻿#include "int3thread.h"
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
@@ -50,13 +50,12 @@ static void close_handler(int sig)
     interrupted = sig;
 }
 
-int3Thread::int3Thread(char* name,QTextBrowser* textBrowser)
+int3Thread::int3Thread(char* name)
 {
     isRun = false;
     qDebug()<<"name::"<<name;
     this->vm_name = QString(name);
     qDebug()<<"name::"<<this->vm_name;
-    this->textBrowser = textBrowser;
 }
 
 void int3Thread::stop() {
@@ -123,64 +122,80 @@ void int3Thread::run() {
         this->sleep(x);
         switch(n) {
         case 0:
-            textBrowser->append("file()");
+            emit textSig("file()");
             break;
         case 1:
-            textBrowser->append("process()");
+            emit textSig("process()");
+
             break;
         case 2:
-            textBrowser->append("thread()");
+            emit textSig("thread()");
             break;
         case 3:
-            textBrowser->append("regChange");
+            emit textSig("regChange()");
             break;
         case 4:
-            textBrowser->append("km()");
+            emit textSig("regChange()");
             break;
         case 5:
-            textBrowser->append("dm()");
+            emit textSig("dm()");
+
             break;
         case 6:
-            textBrowser->append("sm()");
+            emit textSig("sm()");
+
             break;
         case 7:
-            textBrowser->append("win()");
+            emit textSig("win()");
+
             break;
         case 8:
-            textBrowser->append("windows()");
+            emit textSig("windows()");
+
             break;
         case 9:
-            textBrowser->append("gui_1()");
+            emit textSig("gui_1()");
+
             break;
         case 10:
-            textBrowser->append("gui_2()");
+            emit textSig("gui_2()");
+
             break;
         case 11:
-            textBrowser->append("gui_3()");
+            emit textSig("gui_3()");
+
             break;
         case 12:
-            textBrowser->append("gui_4()");
+            emit textSig("gui_4()");
+
             break;
         case 13:
-            textBrowser->append("gui_5()");
+            emit textSig("gui_5()");
+
             break;
         case 14:
-            textBrowser->append("gui_6()");
+            emit textSig("gui_6()");
+
             break;
         case 15:
-            textBrowser->append("gui_7()");
+            emit textSig("gui_7()");
+
             break;
         case 16:
-            textBrowser->append("run()");
+            emit textSig("run()");
+
             break;
         case 17:
-            textBrowser->append("woc()");
+            emit textSig("woc()");
+
             break;
         case 18:
-            textBrowser->append("showError()");
+            emit textSig("showError()");
+
             break;
         case 19:
-            textBrowser->append("PID()");
+            emit textSig("PID()");
+
             break;
 
         }

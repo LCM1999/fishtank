@@ -95,10 +95,15 @@ void MainWindow::refreshlist(vector<process_struct> proclist){
     model->clear();
     for(int i = 0 ;i< proclist.size(); i++) {
         //qDebug()<<this_procList.at(i).process_name;
+        model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("序号")<<QStringLiteral("进程名")<<QStringLiteral("当前位置"));
         QStandardItem* itemProject = new QStandardItem(QString::number(proclist.at(i).pid));
         model->appendRow(itemProject);
         model->setItem(i,1,new QStandardItem(QString::fromStdString(proclist.at(i).process_name)));
         model->setItem(i,2,new QStandardItem(QString("%1").arg(proclist.at(i).current_proc,4,16,QLatin1Char('0'))));
     }
     ui->treeView_2->setModel(model);
+}
+void MainWindow::updateText(QString s)
+{
+    ui->textBrowser_2->append(s);
 }

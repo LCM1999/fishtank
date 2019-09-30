@@ -22,7 +22,7 @@ void process_thread::run(){
 //        QVariant data;
 //        data.setValue(this_procList);
         emit refresh(this_procList);
-        this->sleep(10);
+        this->sleep(5);
     }
 }
 

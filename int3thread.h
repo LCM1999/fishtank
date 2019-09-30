@@ -4,18 +4,21 @@
 #include <QThread>
 #include <QTextBrowser>
 #include <QString>
+#include <QtCore>
 
 
-
-class int3Thread : public QThread
+class int3Thread :public QThread
 {
+    Q_OBJECT
+
 public:
-    int3Thread(char* name, QTextBrowser* textBrowser);
+    int3Thread(char* name);
     void run();
     void stop();
     bool isRun;
     QString vm_name;
-    QTextBrowser* textBrowser;
+signals:
+    void textSig(QString s);
 
 };
 
