@@ -16,6 +16,8 @@ public:
     bool isRun;
     QString vm_name;
     QTextBrowser* textBrowser;
+signals:
+    void textSig(QString s);
 
 };
 

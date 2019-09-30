@@ -28,12 +28,10 @@ private slots:
     void on_pushButton_clicked();
     void on_pushButton_3_clicked();
     void on_listing_triggered();
-
     void on_action_4_triggered();
-
     void on_action_6_triggered();
-
     void on_textBrowser_2_textChanged();
+    void updateText();
 
 private:
     Ui::MainWindow *ui;

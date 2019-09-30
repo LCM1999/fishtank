@@ -123,16 +123,17 @@ void int3Thread::run() {
         this->sleep(x);
         switch(n) {
         case 0:
-            textBrowser->append("file()");
+            emit textSig("file()");
             break;
         case 1:
-            textBrowser->append("process()");
+            emit textSig("process()");
+
             break;
         case 2:
-            textBrowser->append("thread()");
+            emit textSig("thread()");
             break;
         case 3:
-            textBrowser->append("regChange");
+            emit textSig("regChange()");
             break;
         case 4:
             textBrowser->append("km()");
