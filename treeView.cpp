@@ -1,10 +1,12 @@
 ﻿#include "mainwindow.h"
+#include "process.h"
 
 #include <QMessageBox>
 #include <QString>
 #include <QStringLiteral>
 #include <qstandarditemmodel.h>
 #include <QAbstractItemModel>
+
 
 #include <QDebug>
 
@@ -48,6 +50,9 @@ void MainWindow::OnlineTreeViewClick(const QModelIndex & index){
     this->vm_name = new QString(s.data());
     qDebug()<<*vm_name;
     QMessageBox::about(this,QStringLiteral("选中虚拟机"),*vm_name);
+//    QStandardItemModel *model = new QStandardItemModel(ui->treeView_2);
+
+
 }
 
 void MainWindow::OnlineTreeViewClickBin(const QModelIndex & index){

@@ -32,7 +32,9 @@ SOURCES += \
     dialogprocess.cpp \
     int3listing.cpp \
     int3thread.cpp \
-    process.cpp
+    process.cpp \
+    process_thread.cpp \
+    process_thread_lisn.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,7 +42,8 @@ HEADERS += \
     dialogfile.h \
     dialogprocess.h \
     int3thread.h \
-    process.h
+    process.h \
+    processthread.h
 
 FORMS += \
         mainwindow.ui \

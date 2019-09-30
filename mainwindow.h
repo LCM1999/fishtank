@@ -5,7 +5,11 @@
 #include <QString>
 #include "ui_mainwindow.h"
 #include "int3thread.h"
+#include "processthread.h"
+#include <vector>
+#include "process.h"
 
+using namespace std;
 namespace Ui {
 class MainWindow;
 }
@@ -35,13 +39,19 @@ private slots:
 
     void on_textBrowser_2_textChanged();
 
+    void refreshlist(vector<process_struct> proclist);
+
 private:
     Ui::MainWindow *ui;
     QString* vm_name;
     int3Thread* thread_listing_int3;
+    process_thread *pthread;
+    QStandardItemModel* model;
     bool isListing;
     void initTreeView();
     void openListingInt3();
     void closeListingInt3();
+    void openListingPro();
+    void stopListingPro();
 };
 #endif // MAINWINDOW_H

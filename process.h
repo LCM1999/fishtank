@@ -20,6 +20,7 @@ struct process_struct
     std::string process_name;
     addr_t current_proc;
 };
+Q_DECLARE_METATYPE(vector<process_struct>);
 
 vector<process_struct> getProcessList(char* argv);
 
