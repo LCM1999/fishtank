@@ -1,8 +1,10 @@
 ﻿#include "dialogprocess.h"
 #include "ui_dialogprocess.h"
+#include "process.h"
 
 #include <QStandardItemModel>
 #include <QStringLiteral>
+#include <QDebug>
 
 Dialogprocess::Dialogprocess(QWidget *parent) :
     QDialog(parent),
@@ -18,11 +20,17 @@ Dialogprocess::~Dialogprocess()
 }
 void Dialogprocess::initTreeView() {
     QStandardItemModel* model = new QStandardItemModel(ui->treeView);
-    model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("序号")<<QStringLiteral("进程名"));
+    model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("序号")<<QStringLiteral("进程名")<<QStringLiteral("当前位置"));
 
-    for(int i = 0 ;i< 10; i++) {
-        QStandardItem* itemProject = new QStandardItem(QString::number(i));
+    vector<process_struct> this_procList = getProcessList("ubuntu14.04");
+
+    for(int i = 0 ;i< this_procList.size(); i++) {
+        //qDebug()<<this_procList.at(i).process_name;
+        QStandardItem* itemProject = new QStandardItem(QString::number(this_procList.at(i).pid));
         model->appendRow(itemProject);
+        model->setItem(i,1,new QStandardItem(QString::fromStdString(this_procList.at(i).process_name)));
+        model->setItem(i,2,new QStandardItem(QString("%1").arg(this_procList.at(i).current_proc,4,16,QLatin1Char('0'))));
+        /*
         switch (i) {
         case 0:
             model->setItem(i,1,new QStandardItem(QStringLiteral("init")));
@@ -57,6 +65,7 @@ void Dialogprocess::initTreeView() {
         default:
             break;
         }
+        */
     }
     ui->treeView->setModel(model);
 }

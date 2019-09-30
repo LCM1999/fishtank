@@ -31,14 +31,16 @@ SOURCES += \
     dialogfile.cpp \
     dialogprocess.cpp \
     int3listing.cpp \
-    int3thread.cpp
+    int3thread.cpp \
+    process.cpp
 
 HEADERS += \
         mainwindow.h \
     dialogstruct.h \
     dialogfile.h \
     dialogprocess.h \
-    int3thread.h
+    int3thread.h \
+    process.h
 
 FORMS += \
         mainwindow.ui \
