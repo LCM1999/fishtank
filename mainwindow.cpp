@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->isListing = false;
     this->thread_listing_int3 = NULL;
     this->initTreeView();
+    ui->textBrowser->append("software is working!");
+    ui->textBrowser->append("XEN is working!");
 }
 
 MainWindow::~MainWindow()
@@ -48,10 +50,12 @@ void MainWindow::on_listing_triggered()
 {
     if(isListing) {
         if(thread_listing_int3 != NULL) {
+            ui->textBrowser->append("stop listing");
             closeListingInt3();
         }
         isListing = false;
     } else {
+        ui->textBrowser->append("start listing");
         openListingInt3();
         isListing = true;
     }
