@@ -208,17 +208,26 @@
    </attribute>
    <addaction name="listing"/>
    <addaction name="separator"/>
+   <addaction name="action_2"/>
+   <addaction name="separator"/>
+   <addaction name="action_4"/>
+   <addaction name="separator"/>
+   <addaction name="action_6"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="listing">
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="icon">
+    <iconset resource="myres.qrc">
+     <normaloff>:/new/icon/res/icon/apps_listen_72px_547520_easyicon.net.ico</normaloff>:/new/icon/res/icon/apps_listen_72px_547520_easyicon.net.ico</iconset>
+   </property>
    <property name="text">
-    <string>投放病毒并监听</string>
+    <string>监听断点</string>
    </property>
    <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;投放病毒并监听&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;监听&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
   <action name="action">
@@ -239,6 +248,39 @@
   <action name="action_7">
    <property name="text">
     <string>关于我们</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="icon">
+    <iconset resource="myres.qrc">
+     <normaloff>:/new/icon/res/icon/24_rightdown_24px_21142_easyicon.net.ico</normaloff>:/new/icon/res/icon/24_rightdown_24px_21142_easyicon.net.ico</iconset>
+   </property>
+   <property name="text">
+    <string>投放二进制</string>
+   </property>
+   <property name="toolTip">
+    <string>投放二进制</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="icon">
+    <iconset resource="myres.qrc">
+     <normaloff>:/new/icon/res/icon/list_128px_1205813_easyicon.net.ico</normaloff>:/new/icon/res/icon/list_128px_1205813_easyicon.net.ico</iconset>
+   </property>
+   <property name="text">
+    <string>内核数据结构</string>
+   </property>
+   <property name="toolTip">
+    <string>内核数据结构</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="icon">
+    <iconset resource="myres.qrc">
+     <normaloff>:/new/icon/res/icon/list_128px_1229342_easyicon.net.ico</normaloff>:/new/icon/res/icon/list_128px_1229342_easyicon.net.ico</iconset>
+   </property>
+   <property name="text">
+    <string>显示文件修改</string>
    </property>
   </action>
  </widget>

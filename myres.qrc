@@ -1,5 +1,10 @@
 <RCC>
     <qresource prefix="/new/icon">
         <file>res/icon/FTS.ico</file>
+        <file>res/icon/24_rightdown_24px_21142_easyicon.net.ico</file>
+        <file>res/icon/list_128px_1205813_easyicon.net.ico</file>
+        <file>res/icon/list_128px_1229342_easyicon.net.ico</file>
+        <file>res/icon/start_128px_1211116_easyicon.net.ico</file>
+        <file>res/icon/apps_listen_72px_547520_easyicon.net.ico</file>
     </qresource>
 </RCC>
