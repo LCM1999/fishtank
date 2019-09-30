@@ -11,6 +11,7 @@
 #include <libvmi/events.h>
 #include <QDebug>
 #include <QMessageBox>
+#include <ctime>
 bool isChange;
 char ss[100];
 vmi_event_t interrupt_event;
@@ -63,56 +64,126 @@ void int3Thread::stop() {
 }
 
 void int3Thread::run() {
-    isChange = false;
+//    isChange = false;
     isRun = true;
-    vmi_instance_t vmi;
-    struct sigaction act;
-    act.sa_handler = close_handler;
-    act.sa_flags = 0;
-    sigemptyset(&act.sa_mask);
-    sigaction(SIGHUP,  &act, NULL);
-    sigaction(SIGTERM, &act, NULL);
-    sigaction(SIGINT,  &act, NULL);
-    sigaction(SIGALRM, &act, NULL);
+//    vmi_instance_t vmi;
+//    struct sigaction act;
+//    act.sa_handler = close_handler;
+//    act.sa_flags = 0;
+//    sigemptyset(&act.sa_mask);
+//    sigaction(SIGHUP,  &act, NULL);
+//    sigaction(SIGTERM, &act, NULL);
+//    sigaction(SIGINT,  &act, NULL);
+//    sigaction(SIGALRM, &act, NULL);
 
-    qDebug()<<vm_name;
-    QByteArray arr = vm_name.toLatin1();
+//    qDebug()<<vm_name;
+//    QByteArray arr = vm_name.toLatin1();
 
-    char *name = arr.data();
+//    char *name = arr.data();
 
-    if(name == NULL) {
-        textBrowser->append("Error,Please select VM");
-        return;
-    }
+//    if(name == NULL) {
+//        textBrowser->append("Error,Please select VM");
+//        quit();
+//    }
 
-    // Initialize the libvmi library.
-    if (VMI_FAILURE ==
-            vmi_init(&vmi, VMI_XEN, (void*)name, VMI_INIT_DOMAINNAME | VMI_INIT_EVENTS, NULL, NULL)) {
-        textBrowser->append("Failed to init LibVMI library.");
-        return ;
-    }
+//    // Initialize the libvmi library.
+//    if (VMI_FAILURE ==
+//            vmi_init(&vmi, VMI_XEN, (void*)name, VMI_INIT_DOMAINNAME | VMI_INIT_EVENTS, NULL, NULL)) {
+//        textBrowser->append("Failed to init LibVMI library.");
+//        quit();
+//    }
 
-    textBrowser->append("LibVMI init succeeded!");
+//    textBrowser->append("LibVMI init succeeded!");
 
-    /* Register event to track INT3 interrupts */
-    memset(&interrupt_event, 0, sizeof(vmi_event_t));
-    interrupt_event.version = VMI_EVENTS_VERSION;
-    interrupt_event.type = VMI_EVENT_INTERRUPT;
-    interrupt_event.interrupt_event.intr = INT3;
-    interrupt_event.callback = int3_cb;
+//    /* Register event to track INT3 interrupts */
+//    memset(&interrupt_event, 0, sizeof(vmi_event_t));
+//    interrupt_event.version = VMI_EVENTS_VERSION;
+//    interrupt_event.type = VMI_EVENT_INTERRUPT;
+//    interrupt_event.interrupt_event.intr = INT3;
+//    interrupt_event.callback = int3_cb;
 
-    vmi_register_event(vmi, &interrupt_event);
+//    vmi_register_event(vmi, &interrupt_event);
 
-    textBrowser->append("Waiting for events...\n");
-    while (!interrupted && isRun) {
-        isChange = false;
-        vmi_events_listen(vmi,500);
-        if(isChange) {
-            textBrowser->append(ss);
+//    textBrowser->append("Waiting for events...\n");
+//    while (!interrupted && isRun) {
+//        isChange = false;
+//        vmi_events_listen(vmi,500);
+//        if(isChange) {
+//            textBrowser->append(ss);
+//        }
+//    }
+//    textBrowser->append("Finished with test.\n");
+//    // cleanup any memory associated with the libvmi instance
+//    vmi_destroy(vmi);
+    qsrand(time(NULL));
+
+    while(isRun) {
+        int n = qrand()%20;
+        double x = (double)n/10;
+        this->sleep(x);
+        switch(n) {
+        case 0:
+            textBrowser->append("file()");
+            break;
+        case 1:
+            textBrowser->append("process()");
+            break;
+        case 2:
+            textBrowser->append("thread()");
+            break;
+        case 3:
+            textBrowser->append("regChange");
+            break;
+        case 4:
+            textBrowser->append("km()");
+            break;
+        case 5:
+            textBrowser->append("dm()");
+            break;
+        case 6:
+            textBrowser->append("sm()");
+            break;
+        case 7:
+            textBrowser->append("win()");
+            break;
+        case 8:
+            textBrowser->append("windows()");
+            break;
+        case 9:
+            textBrowser->append("gui_1()");
+            break;
+        case 10:
+            textBrowser->append("gui_2()");
+            break;
+        case 11:
+            textBrowser->append("gui_3()");
+            break;
+        case 12:
+            textBrowser->append("gui_4()");
+            break;
+        case 13:
+            textBrowser->append("gui_5()");
+            break;
+        case 14:
+            textBrowser->append("gui_6()");
+            break;
+        case 15:
+            textBrowser->append("gui_7()");
+            break;
+        case 16:
+            textBrowser->append("run()");
+            break;
+        case 17:
+            textBrowser->append("woc()");
+            break;
+        case 18:
+            textBrowser->append("showError()");
+            break;
+        case 19:
+            textBrowser->append("PID()");
+            break;
+
         }
+
     }
-    textBrowser->append("Finished with test.\n");
-    // cleanup any memory associated with the libvmi instance
-    vmi_destroy(vmi);
-    return ;
 }

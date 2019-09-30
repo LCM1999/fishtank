@@ -24,24 +24,23 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
-
-
 void MainWindow::on_pushButton_2_clicked()
 {
+    ui->textBrowser->append("show Dialogstruct");
     Dialogstruct* dialog = new Dialogstruct(this);
     dialog->show();
 }
 
 void MainWindow::on_pushButton_clicked()
 {
+    ui->textBrowser->append("show Dialogfile");
     Dialogfile* dialog = new Dialogfile(this);
     dialog->show();
 }
 
 void MainWindow::on_pushButton_3_clicked()
 {
+    ui->textBrowser->append("show Dialogprocess");
     Dialogprocess* dialog = new Dialogprocess(this);
     dialog->show();
 }
@@ -60,4 +59,21 @@ void MainWindow::on_listing_triggered()
         isListing = true;
     }
 //    QMessageBox::about(this,"asd","asdas");
+}
+
+void MainWindow::on_action_4_triggered()
+{
+    Dialogstruct* dialog = new Dialogstruct(this);
+    dialog->show();
+}
+
+void MainWindow::on_action_6_triggered()
+{
+    Dialogfile* dialog = new Dialogfile(this);
+    dialog->show();
+}
+
+void MainWindow::on_textBrowser_2_textChanged()
+{
+    ui->textBrowser_2->moveCursor(QTextCursor::End);
 }
