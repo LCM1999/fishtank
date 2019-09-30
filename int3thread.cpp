@@ -1,4 +1,4 @@
-#include "int3thread.h"
+﻿#include "int3thread.h"
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
@@ -136,52 +136,66 @@ void int3Thread::run() {
             emit textSig("regChange()");
             break;
         case 4:
-            textBrowser->append("km()");
+            emit textSig("regChange()");
             break;
         case 5:
-            textBrowser->append("dm()");
+            emit textSig("dm()");
+
             break;
         case 6:
-            textBrowser->append("sm()");
+            emit textSig("sm()");
+
             break;
         case 7:
-            textBrowser->append("win()");
+            emit textSig("win()");
+
             break;
         case 8:
-            textBrowser->append("windows()");
+            emit textSig("windows()");
+
             break;
         case 9:
-            textBrowser->append("gui_1()");
+            emit textSig("gui_1()");
+
             break;
         case 10:
-            textBrowser->append("gui_2()");
+            emit textSig("gui_2()");
+
             break;
         case 11:
-            textBrowser->append("gui_3()");
+            emit textSig("gui_3()");
+
             break;
         case 12:
-            textBrowser->append("gui_4()");
+            emit textSig("gui_4()");
+
             break;
         case 13:
-            textBrowser->append("gui_5()");
+            emit textSig("gui_5()");
+
             break;
         case 14:
             textBrowser->append("gui_6()");
             break;
         case 15:
-            textBrowser->append("gui_7()");
+            emit textSig("gui_7()");
+
             break;
         case 16:
-            textBrowser->append("run()");
+            emit textSig("run()");
+
             break;
         case 17:
-            textBrowser->append("woc()");
+            emit textSig("woc()");
+
             break;
         case 18:
-            textBrowser->append("showError()");
+            emit textSig("showError()");
+
             break;
         case 19:
-            textBrowser->append("PID()");
+            emit textSig("PID()");
+
             break;
 
         }
