@@ -11,12 +11,14 @@
 #include <libvmi/events.h>
 #include <QDebug>
 #include <QMessageBox>
+bool isChange;
+char ss[100];
 vmi_event_t interrupt_event;
-
 event_response_t int3_cb(vmi_instance_t vmi, vmi_event_t *event)
 {
+    isChange = true;
     vmi = vmi;
-    printf("Int 3 happened: GFN=%"PRIx64" RIP=%"PRIx64" Length: %"PRIu32"\n",
+    sprintf(ss,"Int 3 happened: GFN=%"PRIx64" RIP=%"PRIx64" Length: %"PRIu32"\n",
            event->interrupt_event.gfn, event->interrupt_event.gla,
            event->interrupt_event.insn_length);
 
@@ -61,6 +63,7 @@ void int3Thread::stop() {
 }
 
 void int3Thread::run() {
+    isChange = false;
     isRun = true;
     vmi_instance_t vmi;
     struct sigaction act;
@@ -102,7 +105,11 @@ void int3Thread::run() {
 
     textBrowser->append("Waiting for events...\n");
     while (!interrupted && isRun) {
+        isChange = false;
         vmi_events_listen(vmi,500);
+        if(isChange) {
+            textBrowser->append(ss);
+        }
     }
     textBrowser->append("Finished with test.\n");
     // cleanup any memory associated with the libvmi instance
